@@ -83,17 +83,18 @@
   /* SERVICES — 3×2 grid same as nrtec products */
   .services-header{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:48px;}
   .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  /* 5-card grid: last 2 centered in their row */
-  .services-grid .service-card:nth-child(4) { grid-column-start: 1; margin-left: 33.33%; }
-  .services-grid .service-card:nth-child(5) { grid-column-start: 2; margin-left: 0; }
+  /* center last 2 cards on desktop */
+  .services-grid .service-card:nth-child(4){grid-column:1/span 1;margin-left:calc(50% + 10px);}
+  .services-grid .service-card:nth-child(5){grid-column:3/span 1;margin-left:calc(-50% - 10px);}
+
 
   .service-card{background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden;transition:box-shadow 200ms,transform 200ms;}
   .service-card:hover{box-shadow:0 8px 32px rgba(244,124,32,0.10);transform:translateY(-2px);}
   .service-card-img{width:100%;height:200px;display:flex;align-items:center;justify-content:center;background:#dde4ee;color:#8a9ab5;font-size:12px;flex-direction:column;gap:8px;text-align:center;padding:12px;}
   .service-card-img svg{width:32px;height:32px;opacity:0.5;}
   .service-card-body{padding:22px 20px 24px;}
-  .service-card-title{font-size:18px;font-weight:600;color:var(--blue);margin-bottom:8px;}
-  .service-card-desc{font-size:16px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;}
+  .service-card-title{font-size:18px;font-weight:600;color:var(--blue);margin-bottom:8px;word-break:normal;overflow-wrap:break-word;}
+  .service-card-desc{font-size:16px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;overflow-wrap:break-word;}
   .service-tag{display:inline-block;background:#fff4eb;color:var(--orange);font-size:12px;font-weight:600;padding:5px 12px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;}
 
   /* PLATFORM DARK — same as nrtec */
@@ -197,9 +198,12 @@
     .two-col{grid-template-columns:1fr;gap:32px;}
 
     /* Products / Services grids */
-    .products-grid,.services-grid{grid-template-columns:1fr 1fr;}
-    .services-grid .service-card:nth-child(4){margin-left:0;grid-column-start:auto;}
-    .services-grid .service-card:nth-child(5){margin-left:0;grid-column-start:auto;}
+    .products-grid{grid-template-columns:1fr 1fr;}
+    .services-grid{grid-template-columns:1fr;}
+    .services-grid .service-card:nth-child(4){grid-column:auto;margin-left:0;}
+    .services-grid .service-card:nth-child(5){grid-column:auto;margin-left:0;}
+    
+    
     .services-header{grid-template-columns:1fr;gap:16px;}
 
     /* Platform dark section */
@@ -227,7 +231,7 @@
   }
   @media(max-width:480px){
     .hero h1{font-size:36px;}
-    .products-grid,.services-grid,.proyectos-grid,.benefits-grid{grid-template-columns:1fr;}
+    .products-grid,.proyectos-grid,.benefits-grid{grid-template-columns:1fr;} .services-grid{grid-template-columns:1fr;}
     .metrics-inner{grid-template-columns:1fr 1fr;}
     .footer-grid{grid-template-columns:1fr;}
   }
